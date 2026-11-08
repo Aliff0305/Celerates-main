@@ -1,0 +1,15 @@
+CREATE TABLE produk (
+id_produk INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+id_umkm INTEGER NOT NULL,
+id_kategori INTEGER,
+nama_produk VARCHAR(150) NOT NULL,
+deskripsi TEXT,
+harga NUMERIC(12,2) NOT NULL CHECK (harga >= 0),
+stok INTEGER NOT NULL DEFAULT 0 CHECK (stok >= 0),
+foto_url TEXT,
+created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fk_produk_umkm FOREIGN KEY (id_umkm)
+REFERENCES umkm(id_umkm) ON DELETE RESTRICT,
+CONSTRAINT fk_produk_kategori FOREIGN KEY (id_kategori)
+REFERENCES kategori(id_kategori) ON DELETE SET NULL
+);

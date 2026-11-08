@@ -1,0 +1,12 @@
+CREATE TABLE umkm (
+id_umkm INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+id_user INTEGER NOT NULL UNIQUE,
+nama_usaha VARCHAR(150) NOT NULL,
+deskripsi TEXT,
+alamat TEXT NOT NULL,
+no_whatsapp VARCHAR(20),
+latitude NUMERIC(10,7),
+longitude NUMERIC(10,7),
+CONSTRAINT fk_umkm_user FOREIGN KEY (id_user)
+REFERENCES users(id_user) ON DELETE RESTRICT
+);

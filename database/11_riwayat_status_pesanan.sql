@@ -1,0 +1,9 @@
+CREATE TABLE riwayat_status_pesanan (
+id_riwayat INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+id_pesanan INTEGER NOT NULL,
+status VARCHAR(30) NOT NULL,
+waktu TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+keterangan TEXT,
+CONSTRAINT fk_riwayat_pesanan FOREIGN KEY (id_pesanan)
+REFERENCES pesanan(id_pesanan) ON DELETE CASCADE
+);
